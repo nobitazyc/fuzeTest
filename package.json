@@ -1,0 +1,27 @@
+{
+  "name": "angulardemo2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "./node_modules/.bin/webpack --config webpack.config.js",
+    "server": "./node_modules/.bin/browser-sync start --server --files index.html dist/*.js",
+    "watch": "./node_modules/.bin/webpack --watch --config webpack.config.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "angular": "^1.7.6",
+    "bootstrap": "^4.2.1",
+    "browser-sync": "^2.26.3",
+    "css-loader": "^2.1.0",
+    "html-loader": "^0.5.5",
+    "jquery": "^3.3.1",
+    "ng-annotate-webpack-plugin": "^0.3.0",
+    "popper.js": "^1.14.6",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.29.0",
+    "webpack-cli": "^3.2.1"
+  }
+}

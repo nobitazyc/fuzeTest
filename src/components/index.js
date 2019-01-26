@@ -1,0 +1,1 @@
+require('./myComponent/myComponent.js');
