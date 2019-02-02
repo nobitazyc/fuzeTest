@@ -1,3 +1,3 @@
-require('./components/index.js');
-require('./css/index.js');
-require('./services/index.js');
+import './components/index.js';
+import './css/index.js';
+import './services/index.js';

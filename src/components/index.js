@@ -1,1 +1,1 @@
-require('./myComponent/myComponent.js');
+require('./app.js');

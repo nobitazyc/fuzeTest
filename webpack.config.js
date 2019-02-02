@@ -1,24 +1,20 @@
 const path = require('path');
-var ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
-
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   entry: {
-    'main': './src/index.js',
     'vendor': [
       'angular',
       'bootstrap'
-    ]
+    ],
+    'main': './src/index.js'
   },
   output: {
-    filename: '[name].js',
+    filename: '[name].bundle.[contenthash].js',
     path: path.resolve(__dirname, 'dist')
   },
-  plugins: [
-      new ngAnnotatePlugin({
-          add: true
-      })
-  ],
   module: {
    rules: [
      {
@@ -38,5 +34,17 @@ module.exports = {
         }
       }
    ]
- }
+ },
+ devtool: 'eval-source-map',
+ plugins: [
+     new ngAnnotatePlugin({
+         add: true
+     }),
+     new HtmlWebpackPlugin({
+       template: 'src/template.html',
+       inject: 'body',
+       filename: '../index.html'
+     }),
+     new CleanWebpackPlugin(['dist'],{watch: true}),
+ ]
 };

@@ -1,1 +1,0 @@
-require('./_test.css');
