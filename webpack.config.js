@@ -7,6 +7,7 @@ module.exports = {
   entry: {
     'vendor': [
       'angular',
+      'angular-route',
       'bootstrap'
     ],
     'main': './src/index.js'
