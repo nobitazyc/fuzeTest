@@ -12,29 +12,7 @@ angular.module('myApp')
   })
   .controller('mainViewController',mainViewController)
 
-function mainViewController($scope,QUESTIONNAIRE_MODE){
-  $scope.questions = [
-    {
-      title: 'What is your favourite programming language?',
-      order: '0',
-      options: [
-        {title:'C++',order:0},
-        {title:'Java',order:1},
-        {title:'Javascript',order:2},
-        {title:'Python',order:3}
-      ]
-    },
-    {
-      title: 'What is your favourite front-end library?',
-      order: '1',
-      options: [
-        {title:'Angular',order:0},
-        {title:'jQuery',order:1},
-        {title:'React',order:2},
-        {title:'Vue',order:3}
-      ]
-    }
-  ];
+function mainViewController($scope, questionnaireService, QUESTIONNAIRE_MODE){
   $scope.selectedQuestionIndex = 0;
   $scope.mode = QUESTIONNAIRE_MODE.READ;
   $scope.addQuestion = addQuestion;
@@ -47,6 +25,10 @@ function mainViewController($scope,QUESTIONNAIRE_MODE){
   $scope.cancelChanges = cancelChanges;
   $scope.QUESTIONNAIRE_MODE = QUESTIONNAIRE_MODE;
 
+  questionnaireService.getQuesitons().then(function(data){
+    $scope.questions = data.data;
+  })
+
   function saveChanges(){
     $scope.selectedQuestionIndex = 0;
     $scope.mode = QUESTIONNAIRE_MODE.READ;
@@ -57,7 +39,6 @@ function mainViewController($scope,QUESTIONNAIRE_MODE){
   function addQuestion(){
     $scope.questions.push({
       title:'',
-      order:$scope.questions.length,
       options:[]
     })
   }

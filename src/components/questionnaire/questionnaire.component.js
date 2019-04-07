@@ -24,12 +24,9 @@ function questionnaireController($filter,QUESTIONNAIRE_MODE){
   function $onInit(){
   }
   function addNewOption(){
-    ctrl.question.options.push({title:'',order:ctrl.question.options.length})
+    ctrl.question.options.push({title:''})
   }
-  function deleteOption(option){
-    ctrl.question.options = _.reject(ctrl.question.options,{order:option.order});
-    _.each(ctrl.question.options,function(option,index){
-      option.order = index;
-    })
+  function deleteOption(index){
+    ctrl.question.options.splice(index,1);
   }
 }

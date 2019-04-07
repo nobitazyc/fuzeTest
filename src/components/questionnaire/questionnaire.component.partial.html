@@ -29,7 +29,7 @@
           <div dnd-handle class="handle">:::</div>
           <div class="input-group">
             <input class="form-control" ng-model="option.title" placeholder="Option title here"/>
-            <div class="input-group-append" ng-click="$ctrl.deleteOption(option)">
+            <div class="input-group-append" ng-click="$ctrl.deleteOption($index)">
               <span class="input-group-text"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
             </div>
           </div>
