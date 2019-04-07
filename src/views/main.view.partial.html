@@ -1,0 +1,53 @@
+<div class="container">
+  <div  ng-if="mode === QUESTIONNAIRE_MODE.READ">
+    <div class="v-center-align">
+      <questionnaire index="selectedQuestionIndex" question="questions[selectedQuestionIndex]" mode="mode" next-question="nextQuestion()" prev-question="prevQuestion()"></questionnaire>
+    </div>
+    <ul class="question-indicator">
+      <li ng-repeat="question in questions" ng-click="changeQuestionIndex($index)">
+        <small>
+          <span
+          class="badge"
+          ng-class="{'badge-warning':$index === selectedQuestionIndex,'badge-secondary':$index !== selectedQuestionIndex}">
+            {{$index+1}}
+          </span>
+        </small>
+        <small class="question-indicator-title" ng-class="{'text-warning':$index === selectedQuestionIndex}">{{question.title}}</small>
+        <div class="question-indicator-box" ng-class="{'active':$index === selectedQuestionIndex}"></div>
+      </li>
+    </ul>
+    <button
+      class="btn btn-warning question-edit"
+      ng-click="editQuestions()">Edit Questions
+    </button>
+  </div>
+  <div ng-if="mode === QUESTIONNAIRE_MODE.WRITE">
+    <ul dnd-list="questions" dnd-allowed-types="['question']">
+      <li
+        ng-repeat="question in questions"
+        dnd-draggable="question"
+        dnd-type="'question'"
+        dnd-moved="questions.splice($index, 1)"
+        dnd-effect-allowed="move"
+      >
+        <dnd-nodrag>
+          <div dnd-handle class="card-handle handle"><i class="fa fa-arrows" aria-hidden="true"></i></div>
+          <questionnaire question="question" mode="mode" delete-question="deleteQuestion(question,$index)"></questionnaire>
+        </dnd-nodrag>
+      </li>
+    </ul>
+    <button
+      class="btn btn-primary"
+      ng-click="addQuestion()">NEW
+    </button>
+    <button
+      class="btn btn-warning"
+      ng-click="saveChanges()">SAVE
+    </button>
+    <button
+      class="btn btn-outline-secondary"
+      ng-click="cancelChanges()">CANCEL CHANGES
+    </button>
+
+  </div>
+</div>

@@ -8,7 +8,9 @@ module.exports = {
     'vendor': [
       'angular',
       'angular-route',
-      'bootstrap'
+      'bootstrap',
+      'lodash',
+      'angular-drag-and-drop-lists'
     ],
     'main': './src/index.js'
   },
