@@ -10,7 +10,6 @@
   },
   {
     "title": "What is your favourite front-end library?",
-    "order": "1",
     "options": [
       {"title":"Angular"},
       {"title":"jQuery"},
